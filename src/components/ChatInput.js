@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import styled from 'styled-components'
 import SendIcon from '@material-ui/icons/Send';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
@@ -11,13 +11,27 @@ import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatColorTextIcon from '@material-ui/icons/FormatColorText';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
-function ChatInput() {
+function ChatInput({sendMessage}) {
+
+    const [input,setInput] = useState("");
+
+
+    const send = (e) =>{
+        e.preventDefault();
+        if(!input) return;
+        sendMessage(input)
+        
+    }
     return (
         <Container>
             <InputContainer>
                 <form>
-                    <input type='text' placeholder='Message Here...'/>
-                    <SendButton>
+                    <input 
+                    onChange={(e) => setInput(e.target.value)}
+                    type='text' placeholder='Message Here...'/>
+                    <SendButton 
+                    type='Submit'
+                    onClick={send}>
                         <Send/>
                     </SendButton>
                 </form>
@@ -108,7 +122,7 @@ const InputContainer = styled.div`
     
 `
 
-const SendButton = styled.div`
+const SendButton = styled.button`
     background : #007a5a;
     border-radius : 2px;
     width: 32px;
@@ -118,6 +132,7 @@ const SendButton = styled.div`
     justify-content:center;
     margin-right:5px;
     cursor:pointer;
+    border:none;
     .MuiSvgIcon-root{
         width:18px;
     }

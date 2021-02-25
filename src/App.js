@@ -55,7 +55,7 @@ console.log("user in app" , user)
                   <Sidebar rooms={rooms}/>
                   <Switch>
                     <Route path='/room/:channelId'>
-                        <Chat/>
+                        <Chat user = {user}/>
                     </Route>
                     <Route path='/'>
                       Select or Create a Channel
@@ -76,9 +76,9 @@ const Container = styled.div`
   width:100%;
   height:100vh;
   display:grid;
-  grid-template-rows: 38px auto;
+  grid-template-rows: 38px minmax(0,1fr);
 `
-
+//1 free space
 const Main = styled.div`
  background : white;
  display:grid;
