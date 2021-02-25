@@ -20,6 +20,7 @@ function ChatInput({sendMessage}) {
         e.preventDefault();
         if(!input) return;
         sendMessage(input)
+        setInput("")
         
     }
     return (
@@ -28,7 +29,9 @@ function ChatInput({sendMessage}) {
                 <form>
                     <input 
                     onChange={(e) => setInput(e.target.value)}
-                    type='text' placeholder='Message Here...'/>
+                    type='text' 
+                    value = {input}
+                    placeholder='Message Here...'/>
                     <SendButton 
                     type='Submit'
                     onClick={send}>
