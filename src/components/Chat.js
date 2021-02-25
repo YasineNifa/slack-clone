@@ -4,16 +4,30 @@ import InfoIcon from '@material-ui/icons/Info';
 import db from '../firebase'
 import ChatInput from './ChatInput'
 import ChatMessage from './ChatMessage'
-
+import {useParams} from 'react-router-dom'
 function Chat() {
-    
+
+    let {channelId} = useParams(); // look to the id in the url
+
+    const [channel, setChannel] = useState()
+    const getChannel = () =>{
+        db.collection('rooms')
+        .doc(channelId)
+        .onSnapshot((snapshot) =>{
+            setChannel(snapshot.data())
+        })// take a snapchot for the current data 
+    }
+
+    useEffect(() =>{
+        getChannel();
+    }, [channelId])
 
     return (
         <Container>
             <Header>
                 <Channel>
                     <ChannelName>
-                        # clever
+                        # {channel.name}
                     </ChannelName>
                     <ChannelInfo>
                         Add Topic

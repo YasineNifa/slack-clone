@@ -69,3 +69,11 @@ when we hit enter, the form will call a function and submit what we type directl
 padding : 8px 20px vertical horizontaly
 
 flex-direction : column; : to make the direction of the flex column
+state : dataset for a component
+localstorage : storage for ur browser similar to cookies
+cookie userd for server
+localstorage just related to browser nothing in backend
+parse from string to json
+
+history allows us to go from page to page
+1:25h so so so importante
